@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Animal and Upload File</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #2c2c2c;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+        .container {
+            background-color: #333;
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            text-align: center;
+        }
+        h3 {
+            font-size: 24px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+        .box {
+            padding: 20px;
+            border: 2px solid #444;
+            border-radius: 8px;
+            background-color: #444;
+        }
+        .equal-box {
+            width: 45%;
+            height: 400px; /* Set equal height for both boxes */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        label {
+            display: flex;
+            align-items: center; /* Align text and radio button vertically */
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #fff;
+        }
+        label img {
+            width: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        label input[type="radio"] {
+            margin-right: 10px; /* Space between radio button and icon */
+        }
+        img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+        .file-info {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ccc;
+        }
+        .animal-box {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px; /* Add gap between the boxes */
+        }
+        .file-upload-box {
+            background-color: #555;
+            padding: 20px;
+            border: 2px solid #666;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        input[type="file"] {
+            font-size: 16px;
+            margin-top: 15px;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="file"]::file-selector-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Animal selection box with image preview -->
+        <div class="animal-box">
+            <div class="box equal-box">
+                <div>
+                    <h3>Select an Animal</h3>
+                    <label><input type="radio" name="animal" value="cat"> <img src="/static/cat-icon.png" alt="Cat"> Cat</label>
+                    <label><input type="radio" name="animal" value="dog"> <img src="/static/dog-icon.png" alt="Dog"> Dog</label>
+                    <label><input type="radio" name="animal" value="elephant"> <img src="/static/elephant-icon.png" alt="Elephant"> Elephant</label>
+                </div>
+            </div>
+            <div class="box equal-box">
+                <div id="animal-image">
+                    <p>Select an animal to preview its image</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- File upload box -->
+        <div class="box file-upload-box">
+            <h3>Upload a File</h3>
+            <input type="file" id="file-input">
+            <div class="file-info" id="file-info"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Handle animal selection
+            document.querySelectorAll('input[name="animal"]').forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    const selectedAnimal = this.value;
+                    const imageDiv = document.getElementById('animal-image');
+                    imageDiv.innerHTML = ''; // Clear previous image
+                    if (this.checked) {
+                        const img = document.createElement('img');
+                        img.src = `/static/${selectedAnimal}.jpg`;
+                        imageDiv.appendChild(img);
+                    }
+                });
+            });
+
+            // Reset file info and file input on page load
+            const fileInfoDiv = document.getElementById('file-info');
+            const fileInput = document.getElementById('file-input');
+            fileInput.value = '';  // Reset the file input value on page load
+            fileInfoDiv.innerHTML = '';  // Clear any file info on page reload
+
+            // Handle file upload
+            fileInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const formData = new FormData();
+                    formData.append('file', file);
+
+                    fetch('/upload', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            fileInfoDiv.innerText = `Error: ${data.error}`;
+                        } else {
+                            fileInfoDiv.innerText = `Name: ${data.name}, Size: ${data.size} bytes, Type: ${data.type}`;
+                        }
+                    })
+                    .catch(error => {
+                        fileInfoDiv.innerText = 'An error occurred';
+                    });
+                } else {
+                    fileInfoDiv.innerHTML = ''; // Clear file info if no file is selected
+                }
+            });
+        });
+    </script>
+</body>
+</html>
