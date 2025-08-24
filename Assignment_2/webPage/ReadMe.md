@@ -30,12 +30,9 @@ This project is a simple **FastAPI** web app that:
     app.mount("/static", StaticFiles(directory="static"), name="static")
 
     <img src="/static/animals/cat-icon.png" alt="Cat">
-<img src="/static/animals/dog.jpg" alt="Dog">
+    <img src="/static/animals/dog.jpg" alt="Dog">
 
     img.src = `/static/animals/${selectedAnimal}.jpg`;
-
-
-
     ```
 3. **Upload the End Point**
 
