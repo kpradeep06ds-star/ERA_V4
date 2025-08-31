@@ -1,0 +1,7 @@
+pyfiglet
+fastapi
+uvicorn
+jinja2
+Pillow
+numpy
+opencv-python-headless

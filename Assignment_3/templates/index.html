@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ASCII Art Generator</title>
+  <style>
+    body {
+      font-family: ui-monospace, monospace;
+      background-color: #000;
+      color: #f0f0f0;
+      display: flex; justify-content: center; align-items: center;
+      min-height: 100vh; margin: 0;
+    }
+    
+    /* add or replace these */
+    .container { 
+      position: relative;           /* so the nav can anchor to it */
+      max-width: 900px; 
+      width: 100%; 
+      text-align: center; 
+      padding: 56px 20px 20px;      /* extra top padding to make room for the links */
+      box-sizing: border-box; 
+    }
+
+    /* new top nav that sits above the H1 but doesn’t move layout */
+    .nav-top {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;      /* center the two links */
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* optional right-side “Back to Text” link on face page */
+    .nav-top .back {
+      position: absolute;
+      right: 0;
+    }
+
+    .nav-top a { color: #bbb; text-decoration: none; }
+    .nav-top a.active { color: #fff; text-decoration: underline; }
+    pre {
+      background-color: #111; color: #f0f0f0; border: 1px solid #333;
+      padding: 1em; line-height: 1; white-space: pre; display: inline-block;
+      text-align: left; border-radius: 8px; margin-top: 1rem;
+    }
+    input[type="text"], input[type="number"], select {
+      background-color: #222; color: #f0f0f0; border: 1px solid #555; padding: .5em; margin: .5rem 0;
+    }
+    input[type="file"] { color: #f0f0f0; margin: .5rem 0; }
+    label { margin-right: 10px; }
+    button { background: #444; color:#f0f0f0; border:0; padding:.5em 1em; border-radius:6px; cursor:pointer; margin-left:10px; }
+    button:hover { background:#666; }
+    hr { border: none; border-top: 1px solid #333; margin: 1rem 0; }
+
+
+
+    /* Face form alignment */
+    .face-form { display: inline-block; text-align: left; margin-top: 1rem; }
+    .face-form .form-row { display: flex; align-items: center; gap: 10px; margin: 0.5rem 0; }
+    .face-form .form-row > label:first-child { min-width: 160px; }
+
+    .text-form { display: inline-block; text-align: left; margin-top: 1rem; }
+    .text-form .form-row { display: flex; align-items: center; gap: 10px; margin: 0.5rem 0; }
+    .text-form .form-row > label:first-child { min-width: 160px; }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="nav-top">
+        <a href="{{ url_for('home') }}" class="{% if mode != 'face' %}active{% endif %}">Text → ASCII</a>
+        <a href="{{ url_for('face_form') }}" class="{% if mode == 'face' %}active{% endif %}">Face Image → ASCII</a>
+        {% if mode == 'face' %}
+          <a class="back" href="{{ url_for('home') }}">⬅ Back to Text</a>
+        {% endif %}
+    </div>
+    <h1>ASCII Art Generator</h1>
+
+    <!-- Tabs / Back -->
+    <div class="nav">
+      <div class="nav-left">
+        <a href="{{ url_for('home') }}" class="{% if mode != 'face' %}active{% endif %}">Text → ASCII</a>
+        <a href="{{ url_for('face_form') }}" class="{% if mode == 'face' %}active{% endif %}">Face Image → ASCII</a>
+      </div>
+      <div class="nav-right">
+        {% if mode == 'face' %}
+          <a href="{{ url_for('home') }}">⬅ Back to Text</a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if mode != 'face' %}
+      <!-- TEXT → ASCII -->
+      <form action="{{ url_for('generate') }}" method="post" aria-label="Text to ASCII form" class="text-form">
+        <div class="form-row">
+          <label for="text">Enter text:</label>
+          <input type="text" id="text" name="text" value="{{ text_input }}" placeholder="Type something…" required>
+        </div>
+
+        <div class="form-row">
+          <label for="font-search">Search font:</label>
+          <input type="text" id="font-search" placeholder="Type to filter font list">
+        </div>
+
+        <div class="form-row">
+          <label for="font">Choose font:</label>
+          <select id="font" name="font">
+            {% for font in available_fonts %}
+              <option value="{{ font }}" {% if font == selected_font %}selected{% endif %}>{{ font }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit">Generate</button>
+        </div>
+      </form>
+
+    {% endif %}
+
+    {% if mode == 'face' %}
+      <!-- FACE → ASCII -->
+      <form action="{{ request.url_for('face_ascii') }}"
+            method="post" enctype="multipart/form-data"
+            class="face-form" aria-label="Image to ASCII form">
+
+        <div class="form-row">
+          <label for="file">Upload image:</label>
+          <input type="file" id="file" name="file" accept="image/*" required title="Choose a face photo (human or animal)">
+        </div>
+
+        <div class="form-row">
+          <label for="max_cols">Width (chars):</label>
+          <input type="number" id="max_cols" name="max_cols" value="{{ max_cols or 120 }}" min="40" max="240">
+        </div>
+
+        <div class="form-row">
+          <label for="charset">Charset:</label>
+          <select id="charset" name="charset">
+            <option value="standard" {% if charset=='standard' %}selected{% endif %}>standard</option>
+            <option value="blocks"   {% if charset=='blocks' %}selected{% endif %}>blocks</option>
+            <option value="sharp"    {% if charset=='sharp' %}selected{% endif %}>sharp</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="crop_face">
+            <input type="checkbox" id="crop_face" name="crop_face" {% if crop_face_checked %}checked{% endif %}>
+            Auto-detect & crop face
+          </label>
+        </div>
+
+        <div class="form-row">
+          <span aria-hidden="true"></span>
+          <button type="submit">Generate ASCII</button>
+        </div>
+      </form>
+    {% endif %}
+
+    <hr>
+
+    {% if colorful_ascii_art %}
+      <h2>Generated Colorful ASCII Art:</h2>
+      <pre aria-live="polite">{{ colorful_ascii_art | safe }}</pre>
+    {% endif %}
+  </div>
+
+  {% if mode != 'face' %}
+  <script>
+    const fontSearchInput = document.getElementById('font-search');
+    const fontSelect = document.getElementById('font');
+    if (fontSearchInput && fontSelect) {
+      const fontOptions = Array.from(fontSelect.options);
+      fontSearchInput.addEventListener('input', function() {
+        const q = this.value.toLowerCase();
+        fontOptions.forEach(o => { o.style.display = o.textContent.toLowerCase().includes(q) ? '' : 'none'; });
+        if (fontSelect.selectedOptions[0]?.style.display === 'none') {
+          const firstVisible = fontOptions.find(o => o.style.display === '');
+          if (firstVisible) firstVisible.selected = true;
+        }
+      });
+    }
+  </script>
+  {% endif %}
+</body>
+</html>
