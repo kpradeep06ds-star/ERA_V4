@@ -96,7 +96,7 @@ Total parameters: 15634
 
 ```
 import torch
-from mnist_ccmccmccp import CCMCCMCCP
+from mnist_model_v4 import CCMCCMCCP
 
 model = CCMCCMCCP()
 model.load_state_dict(torch.load("mnist_ccmccmccp_ema.pt"))
