@@ -65,8 +65,9 @@ Arguments
 --no-tta : disable Test-Time Augmentation
 
 The script saves the final EMA weights as mnist_ccmccmccp_ema.pt
-
+```
 ## Logs - Default Run
+
 ```
 Epoch 01 | test loss 2.3139 | test acc 10.11%
 Epoch 02 | test loss 2.2978 | test acc  9.80%
