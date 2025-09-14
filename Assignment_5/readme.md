@@ -71,6 +71,8 @@ Arguments
 
 The script saves the final EMA weights as mnist_ccmccmccp_ema.pt
 ```
+---
+
 ## Training Logs
 
 **Default Run**
