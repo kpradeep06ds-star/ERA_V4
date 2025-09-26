@@ -1,0 +1,596 @@
+ python .\module_1.py
+cuda
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 28, 26, 26]             252
+              ReLU-2           [-1, 28, 26, 26]               0
+            Conv2d-3           [-1, 64, 24, 24]          16,128
+              ReLU-4           [-1, 64, 24, 24]               0
+            Conv2d-5          [-1, 128, 22, 22]          73,728
+              ReLU-6          [-1, 128, 22, 22]               0
+         MaxPool2d-7          [-1, 128, 11, 11]               0
+            Conv2d-8           [-1, 32, 11, 11]           4,096
+              ReLU-9           [-1, 32, 11, 11]               0
+           Conv2d-10             [-1, 64, 9, 9]          18,432
+             ReLU-11             [-1, 64, 9, 9]               0
+           Conv2d-12            [-1, 128, 7, 7]          73,728
+             ReLU-13            [-1, 128, 7, 7]               0
+           Conv2d-14             [-1, 10, 7, 7]           1,280
+             ReLU-15             [-1, 10, 7, 7]               0
+           Conv2d-16             [-1, 10, 1, 1]           4,900
+================================================================
+Total params: 192,544
+Trainable params: 192,544
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 2.16
+Params size (MB): 0.73
+Estimated Total Size (MB): 2.89
+----------------------------------------------------------------
+EPOCH: 0
+Loss=2.3025875091552734 Batch_id=0 Accuracy=10.94
+Loss=2.302393913269043 Batch_id=32 Accuracy=9.38
+Loss=2.300372362136841 Batch_id=64 Accuracy=11.01
+Loss=2.288513660430908 Batch_id=96 Accuracy=12.55
+Loss=1.599318504333496 Batch_id=128 Accuracy=18.50
+Loss=0.7987773418426514 Batch_id=160 Accuracy=27.49
+Loss=0.458173930644989 Batch_id=192 Accuracy=36.96
+Loss=0.6465609073638916 Batch_id=224 Accuracy=44.09
+Loss=0.28180795907974243 Batch_id=256 Accuracy=49.42
+Loss=0.2710959315299988 Batch_id=288 Accuracy=53.87
+Loss=0.3652103841304779 Batch_id=320 Accuracy=57.54
+Loss=0.47283935546875 Batch_id=352 Accuracy=60.58
+Loss=0.14452466368675232 Batch_id=384 Accuracy=63.33
+Loss=0.09729781746864319 Batch_id=416 Accuracy=65.64
+Loss=0.178379625082016 Batch_id=448 Accuracy=67.62
+Loss=0.07600580155849457 Batch_id=480 Accuracy=69.36
+Loss=0.13288614153862 Batch_id=512 Accuracy=70.85
+Loss=0.09952905774116516 Batch_id=544 Accuracy=72.30
+Loss=0.2579018771648407 Batch_id=576 Accuracy=73.58
+Loss=0.08627268671989441 Batch_id=608 Accuracy=74.71
+Loss=0.16645745933055878 Batch_id=640 Accuracy=75.75
+Loss=0.09070203453302383 Batch_id=672 Accuracy=76.67
+Loss=0.11350560188293457 Batch_id=704 Accuracy=77.53
+Loss=0.2633576989173889 Batch_id=736 Accuracy=78.35
+Loss=0.15776705741882324 Batch_id=768 Accuracy=79.10
+Loss=0.1681966632604599 Batch_id=800 Accuracy=79.78
+Loss=0.0767185389995575 Batch_id=832 Accuracy=80.44
+Loss=0.16763150691986084 Batch_id=864 Accuracy=81.03
+Loss=0.13776373863220215 Batch_id=896 Accuracy=81.58
+Loss=0.1727401316165924 Batch_id=928 Accuracy=82.11
+
+Test set: Average loss: 0.0014, Accuracy: 9711/10000 (97.11%)
+
+EPOCH: 1
+Loss=0.16605904698371887 Batch_id=0 Accuracy=93.75
+Loss=0.09847179055213928 Batch_id=32 Accuracy=96.12
+Loss=0.015661654993891716 Batch_id=64 Accuracy=96.59
+Loss=0.049683816730976105 Batch_id=96 Accuracy=96.76
+Loss=0.09009553492069244 Batch_id=128 Accuracy=96.84
+Loss=0.1317906528711319 Batch_id=160 Accuracy=96.85
+Loss=0.11679008603096008 Batch_id=192 Accuracy=96.87
+Loss=0.11710067093372345 Batch_id=224 Accuracy=96.92
+Loss=0.10727706551551819 Batch_id=256 Accuracy=96.99
+Loss=0.10773154348134995 Batch_id=288 Accuracy=97.08
+Loss=0.06678087264299393 Batch_id=320 Accuracy=97.09
+Loss=0.16052019596099854 Batch_id=352 Accuracy=97.11
+Loss=0.056263308972120285 Batch_id=384 Accuracy=97.13
+Loss=0.0980793684720993 Batch_id=416 Accuracy=97.22
+Loss=0.07978350669145584 Batch_id=448 Accuracy=97.24
+Loss=0.18710964918136597 Batch_id=480 Accuracy=97.25
+Loss=0.03611746057868004 Batch_id=512 Accuracy=97.20
+Loss=0.019801855087280273 Batch_id=544 Accuracy=97.20
+Loss=0.06929777562618256 Batch_id=576 Accuracy=97.22
+Loss=0.04631350561976433 Batch_id=608 Accuracy=97.19
+Loss=0.1534166932106018 Batch_id=640 Accuracy=97.20
+Loss=0.018481258302927017 Batch_id=672 Accuracy=97.21
+Loss=0.07074744999408722 Batch_id=704 Accuracy=97.24
+Loss=0.06627929955720901 Batch_id=736 Accuracy=97.24
+Loss=0.019017308950424194 Batch_id=768 Accuracy=97.25
+Loss=0.08353764563798904 Batch_id=800 Accuracy=97.27
+Loss=0.11478745937347412 Batch_id=832 Accuracy=97.28
+Loss=0.04426091909408569 Batch_id=864 Accuracy=97.32
+Loss=0.0235036239027977 Batch_id=896 Accuracy=97.34
+Loss=0.11519397795200348 Batch_id=928 Accuracy=97.34
+
+Test set: Average loss: 0.0009, Accuracy: 9818/10000 (98.18%)
+
+EPOCH: 2
+Loss=0.07520909607410431 Batch_id=0 Accuracy=98.44
+Loss=0.03415224701166153 Batch_id=32 Accuracy=97.59
+Loss=0.1433284431695938 Batch_id=64 Accuracy=97.67
+Loss=0.005636713933199644 Batch_id=96 Accuracy=97.89
+Loss=0.20300211012363434 Batch_id=128 Accuracy=97.86
+Loss=0.07816484570503235 Batch_id=160 Accuracy=97.92
+Loss=0.01762850396335125 Batch_id=192 Accuracy=97.92
+Loss=0.03042859584093094 Batch_id=224 Accuracy=97.93
+Loss=0.047395847737789154 Batch_id=256 Accuracy=97.84
+Loss=0.19695760309696198 Batch_id=288 Accuracy=97.90
+Loss=0.026046987622976303 Batch_id=320 Accuracy=97.97
+Loss=0.06647458672523499 Batch_id=352 Accuracy=97.97
+Loss=0.01988139934837818 Batch_id=384 Accuracy=98.01
+Loss=0.14805202186107635 Batch_id=416 Accuracy=98.02
+Loss=0.0970558300614357 Batch_id=448 Accuracy=98.06
+Loss=0.28872692584991455 Batch_id=480 Accuracy=98.06
+Loss=0.08773449063301086 Batch_id=512 Accuracy=98.11
+Loss=0.08830306679010391 Batch_id=544 Accuracy=98.09
+Loss=0.009618783369660378 Batch_id=576 Accuracy=98.10
+Loss=0.027990128844976425 Batch_id=608 Accuracy=98.11
+Loss=0.07984273135662079 Batch_id=640 Accuracy=98.09
+Loss=0.05070345848798752 Batch_id=672 Accuracy=98.11
+Loss=0.023484617471694946 Batch_id=704 Accuracy=98.12
+Loss=0.03128216043114662 Batch_id=736 Accuracy=98.12
+Loss=0.0022092259023338556 Batch_id=768 Accuracy=98.14
+Loss=0.06866370886564255 Batch_id=800 Accuracy=98.15
+Loss=0.021421881392598152 Batch_id=832 Accuracy=98.14
+Loss=0.012323347851634026 Batch_id=864 Accuracy=98.16
+Loss=0.03959634155035019 Batch_id=896 Accuracy=98.18
+Loss=0.13177020847797394 Batch_id=928 Accuracy=98.17
+
+Test set: Average loss: 0.0008, Accuracy: 9824/10000 (98.24%)
+
+EPOCH: 3
+Loss=0.09811007231473923 Batch_id=0 Accuracy=98.44
+Loss=0.026504091918468475 Batch_id=32 Accuracy=98.25
+Loss=0.026318037882447243 Batch_id=64 Accuracy=98.44
+Loss=0.04229087010025978 Batch_id=96 Accuracy=98.45
+Loss=0.05730679631233215 Batch_id=128 Accuracy=98.49
+Loss=0.007853517308831215 Batch_id=160 Accuracy=98.55
+Loss=0.15010347962379456 Batch_id=192 Accuracy=98.50
+Loss=0.014748482033610344 Batch_id=224 Accuracy=98.55
+Loss=0.11393935978412628 Batch_id=256 Accuracy=98.55
+Loss=0.024057261645793915 Batch_id=288 Accuracy=98.57
+Loss=0.09815656393766403 Batch_id=320 Accuracy=98.53
+Loss=0.0038853175938129425 Batch_id=352 Accuracy=98.57
+Loss=0.015091532841324806 Batch_id=384 Accuracy=98.55
+Loss=0.09164484590291977 Batch_id=416 Accuracy=98.49
+Loss=0.09308914095163345 Batch_id=448 Accuracy=98.49
+Loss=0.044767461717128754 Batch_id=480 Accuracy=98.50
+Loss=0.08913589268922806 Batch_id=512 Accuracy=98.50
+Loss=0.019029803574085236 Batch_id=544 Accuracy=98.50
+Loss=0.10464120656251907 Batch_id=576 Accuracy=98.51
+Loss=0.08917170763015747 Batch_id=608 Accuracy=98.48
+Loss=0.07402105629444122 Batch_id=640 Accuracy=98.46
+Loss=0.08249877393245697 Batch_id=672 Accuracy=98.45
+Loss=0.009141085669398308 Batch_id=704 Accuracy=98.46
+Loss=0.010231380350887775 Batch_id=736 Accuracy=98.48
+Loss=0.13449949026107788 Batch_id=768 Accuracy=98.45
+Loss=0.016949497163295746 Batch_id=800 Accuracy=98.45
+Loss=0.19872123003005981 Batch_id=832 Accuracy=98.47
+Loss=0.06877300888299942 Batch_id=864 Accuracy=98.46
+Loss=0.039454925805330276 Batch_id=896 Accuracy=98.45
+Loss=0.10134254395961761 Batch_id=928 Accuracy=98.44
+
+Test set: Average loss: 0.0006, Accuracy: 9872/10000 (98.72%)
+
+EPOCH: 4
+Loss=0.016072535887360573 Batch_id=0 Accuracy=100.00
+Loss=0.011662832461297512 Batch_id=32 Accuracy=98.67
+Loss=0.03742566332221031 Batch_id=64 Accuracy=98.73
+Loss=0.016985155642032623 Batch_id=96 Accuracy=98.68
+Loss=0.05099260434508324 Batch_id=128 Accuracy=98.73
+Loss=0.0864696204662323 Batch_id=160 Accuracy=98.75
+Loss=0.018929043784737587 Batch_id=192 Accuracy=98.75
+Loss=0.006913130637258291 Batch_id=224 Accuracy=98.74
+Loss=0.019098004326224327 Batch_id=256 Accuracy=98.79
+Loss=0.004667837638407946 Batch_id=288 Accuracy=98.83
+Loss=0.017271066084504128 Batch_id=320 Accuracy=98.84
+Loss=0.03888973966240883 Batch_id=352 Accuracy=98.82
+Loss=0.19112466275691986 Batch_id=384 Accuracy=98.84
+Loss=0.01987675204873085 Batch_id=416 Accuracy=98.79
+Loss=0.10671369731426239 Batch_id=448 Accuracy=98.74
+Loss=0.006115254946053028 Batch_id=480 Accuracy=98.75
+Loss=0.01506587490439415 Batch_id=512 Accuracy=98.75
+Loss=0.009021660313010216 Batch_id=544 Accuracy=98.73
+Loss=0.021086378023028374 Batch_id=576 Accuracy=98.74
+Loss=0.20739422738552094 Batch_id=608 Accuracy=98.72
+Loss=0.012186803855001926 Batch_id=640 Accuracy=98.72
+Loss=0.056657422333955765 Batch_id=672 Accuracy=98.72
+Loss=0.0023536277003586292 Batch_id=704 Accuracy=98.74
+Loss=0.006225393153727055 Batch_id=736 Accuracy=98.73
+Loss=0.11879907548427582 Batch_id=768 Accuracy=98.72
+Loss=0.019520144909620285 Batch_id=800 Accuracy=98.72
+Loss=0.015747297555208206 Batch_id=832 Accuracy=98.72
+Loss=0.121613509953022 Batch_id=864 Accuracy=98.71
+Loss=0.09625251591205597 Batch_id=896 Accuracy=98.71
+Loss=0.16856753826141357 Batch_id=928 Accuracy=98.72
+
+Test set: Average loss: 0.0007, Accuracy: 9844/10000 (98.44%)
+
+EPOCH: 5
+Loss=0.0043881176970899105 Batch_id=0 Accuracy=100.00
+Loss=0.09505542367696762 Batch_id=32 Accuracy=98.34
+Loss=0.006226270459592342 Batch_id=64 Accuracy=98.77
+Loss=0.052732210606336594 Batch_id=96 Accuracy=98.79
+Loss=0.0010551800951361656 Batch_id=128 Accuracy=98.89
+Loss=0.0526035912334919 Batch_id=160 Accuracy=98.85
+Loss=0.03954156115651131 Batch_id=192 Accuracy=98.85
+Loss=0.026407428085803986 Batch_id=224 Accuracy=98.83
+Loss=0.028970859944820404 Batch_id=256 Accuracy=98.88
+Loss=0.10198643058538437 Batch_id=288 Accuracy=98.84
+Loss=0.015117963775992393 Batch_id=320 Accuracy=98.79
+Loss=0.03197363391518593 Batch_id=352 Accuracy=98.79
+Loss=0.0030568877700716257 Batch_id=384 Accuracy=98.79
+Loss=0.024036463350057602 Batch_id=416 Accuracy=98.79
+Loss=0.008728018030524254 Batch_id=448 Accuracy=98.78
+Loss=0.03618425875902176 Batch_id=480 Accuracy=98.76
+Loss=0.13581649959087372 Batch_id=512 Accuracy=98.75
+Loss=0.0031740758568048477 Batch_id=544 Accuracy=98.77
+Loss=0.0141366645693779 Batch_id=576 Accuracy=98.78
+Loss=0.010594033636152744 Batch_id=608 Accuracy=98.81
+Loss=0.08950893580913544 Batch_id=640 Accuracy=98.80
+Loss=0.03141994774341583 Batch_id=672 Accuracy=98.81
+Loss=0.017576061189174652 Batch_id=704 Accuracy=98.83
+Loss=0.00898386538028717 Batch_id=736 Accuracy=98.83
+Loss=0.007435591425746679 Batch_id=768 Accuracy=98.84
+Loss=0.007488140370696783 Batch_id=800 Accuracy=98.86
+Loss=0.02266574837267399 Batch_id=832 Accuracy=98.85
+Loss=0.0056805796921253204 Batch_id=864 Accuracy=98.85
+Loss=0.08307109773159027 Batch_id=896 Accuracy=98.84
+Loss=0.013549846597015858 Batch_id=928 Accuracy=98.86
+
+Test set: Average loss: 0.0006, Accuracy: 9860/10000 (98.60%)
+
+EPOCH: 6
+Loss=0.025403443723917007 Batch_id=0 Accuracy=98.44
+Loss=0.03259853273630142 Batch_id=32 Accuracy=99.05
+Loss=0.03488875553011894 Batch_id=64 Accuracy=99.11
+Loss=0.007518660742789507 Batch_id=96 Accuracy=99.26
+Loss=0.0004663267463911325 Batch_id=128 Accuracy=99.14
+Loss=0.05014657974243164 Batch_id=160 Accuracy=99.14
+Loss=0.001636180910281837 Batch_id=192 Accuracy=99.14
+Loss=0.0019301001448184252 Batch_id=224 Accuracy=99.13
+Loss=0.032530538737773895 Batch_id=256 Accuracy=99.13
+Loss=0.06724074482917786 Batch_id=288 Accuracy=99.04
+Loss=0.023847121745347977 Batch_id=320 Accuracy=99.04
+Loss=0.009869307279586792 Batch_id=352 Accuracy=99.04
+Loss=0.041660014539957047 Batch_id=384 Accuracy=99.01
+Loss=0.009145083837211132 Batch_id=416 Accuracy=98.99
+Loss=0.0249521192163229 Batch_id=448 Accuracy=99.00
+Loss=0.03336534649133682 Batch_id=480 Accuracy=98.99
+Loss=0.012568608857691288 Batch_id=512 Accuracy=98.98
+Loss=0.016954677179455757 Batch_id=544 Accuracy=98.98
+Loss=0.09948210418224335 Batch_id=576 Accuracy=98.95
+Loss=0.018752330914139748 Batch_id=608 Accuracy=98.95
+Loss=0.06399056315422058 Batch_id=640 Accuracy=98.94
+Loss=0.008356742560863495 Batch_id=672 Accuracy=98.96
+Loss=0.05064507573843002 Batch_id=704 Accuracy=98.96
+Loss=0.16858544945716858 Batch_id=736 Accuracy=98.95
+Loss=0.05471400171518326 Batch_id=768 Accuracy=98.93
+Loss=0.017343899235129356 Batch_id=800 Accuracy=98.94
+Loss=0.004046006593853235 Batch_id=832 Accuracy=98.93
+Loss=0.0032982490956783295 Batch_id=864 Accuracy=98.93
+Loss=0.009606318548321724 Batch_id=896 Accuracy=98.93
+Loss=0.0006972387782298028 Batch_id=928 Accuracy=98.94
+
+Test set: Average loss: 0.0005, Accuracy: 9883/10000 (98.83%)
+
+EPOCH: 7
+Loss=0.006226361263543367 Batch_id=0 Accuracy=100.00
+Loss=0.01523817703127861 Batch_id=32 Accuracy=99.20
+Loss=0.021676717326045036 Batch_id=64 Accuracy=99.18
+Loss=0.02754806913435459 Batch_id=96 Accuracy=99.15
+Loss=0.003672321792691946 Batch_id=128 Accuracy=99.13
+Loss=0.011992121115326881 Batch_id=160 Accuracy=99.12
+Loss=0.032525740563869476 Batch_id=192 Accuracy=99.13
+Loss=0.012549689039587975 Batch_id=224 Accuracy=99.12
+Loss=0.058335404843091965 Batch_id=256 Accuracy=99.17
+Loss=0.08424417674541473 Batch_id=288 Accuracy=99.16
+Loss=0.0011190304066985846 Batch_id=320 Accuracy=99.20
+Loss=0.07554741203784943 Batch_id=352 Accuracy=99.20
+Loss=0.11376933753490448 Batch_id=384 Accuracy=99.22
+Loss=0.033759139478206635 Batch_id=416 Accuracy=99.23
+Loss=0.046810001134872437 Batch_id=448 Accuracy=99.20
+Loss=0.005469455849379301 Batch_id=480 Accuracy=99.19
+Loss=0.012521225959062576 Batch_id=512 Accuracy=99.15
+Loss=0.0059486208483576775 Batch_id=544 Accuracy=99.15
+Loss=0.015014685690402985 Batch_id=576 Accuracy=99.13
+Loss=0.0035107829608023167 Batch_id=608 Accuracy=99.12
+Loss=0.009874636307358742 Batch_id=640 Accuracy=99.12
+Loss=0.04877493903040886 Batch_id=672 Accuracy=99.10
+Loss=0.012888278812170029 Batch_id=704 Accuracy=99.12
+Loss=0.012300259433686733 Batch_id=736 Accuracy=99.11
+Loss=0.011307721957564354 Batch_id=768 Accuracy=99.09
+Loss=0.01708848401904106 Batch_id=800 Accuracy=99.09
+Loss=0.022326435893774033 Batch_id=832 Accuracy=99.09
+Loss=0.03771847113966942 Batch_id=864 Accuracy=99.08
+Loss=0.03888468071818352 Batch_id=896 Accuracy=99.07
+Loss=0.03810586407780647 Batch_id=928 Accuracy=99.06
+
+Test set: Average loss: 0.0006, Accuracy: 9866/10000 (98.66%)
+
+EPOCH: 8
+Loss=0.01890822872519493 Batch_id=0 Accuracy=98.44
+Loss=0.0027670199051499367 Batch_id=32 Accuracy=99.24
+Loss=0.0009196115424856544 Batch_id=64 Accuracy=99.45
+Loss=0.026089198887348175 Batch_id=96 Accuracy=99.40
+Loss=0.001785719650797546 Batch_id=128 Accuracy=99.39
+Loss=0.018124673515558243 Batch_id=160 Accuracy=99.35
+Loss=0.06825071573257446 Batch_id=192 Accuracy=99.29
+Loss=0.008827829733490944 Batch_id=224 Accuracy=99.29
+Loss=0.004184585064649582 Batch_id=256 Accuracy=99.28
+Loss=0.025115428492426872 Batch_id=288 Accuracy=99.29
+Loss=0.02010725811123848 Batch_id=320 Accuracy=99.30
+Loss=0.003987046889960766 Batch_id=352 Accuracy=99.30
+Loss=0.06645116209983826 Batch_id=384 Accuracy=99.27
+Loss=0.003292340785264969 Batch_id=416 Accuracy=99.26
+Loss=0.004433442838490009 Batch_id=448 Accuracy=99.26
+Loss=0.0054620737209916115 Batch_id=480 Accuracy=99.26
+Loss=0.0023363265208899975 Batch_id=512 Accuracy=99.28
+Loss=0.028449971228837967 Batch_id=544 Accuracy=99.26
+Loss=0.0018552500987425447 Batch_id=576 Accuracy=99.24
+Loss=0.02527714893221855 Batch_id=608 Accuracy=99.23
+Loss=0.0009863792220130563 Batch_id=640 Accuracy=99.22
+Loss=0.0915202647447586 Batch_id=672 Accuracy=99.22
+Loss=0.0021171558182686567 Batch_id=704 Accuracy=99.22
+Loss=0.062166858464479446 Batch_id=736 Accuracy=99.22
+Loss=0.016248783096671104 Batch_id=768 Accuracy=99.21
+Loss=0.01598583720624447 Batch_id=800 Accuracy=99.20
+Loss=0.0028439415618777275 Batch_id=832 Accuracy=99.19
+Loss=0.017018739134073257 Batch_id=864 Accuracy=99.19
+Loss=0.0008239168673753738 Batch_id=896 Accuracy=99.20
+Loss=0.009989289566874504 Batch_id=928 Accuracy=99.18
+
+Test set: Average loss: 0.0005, Accuracy: 9896/10000 (98.96%)
+
+EPOCH: 9
+Loss=0.04107992351055145 Batch_id=0 Accuracy=98.44
+Loss=0.002769062528386712 Batch_id=32 Accuracy=99.48
+Loss=0.004313149955123663 Batch_id=64 Accuracy=99.62
+Loss=0.010597512125968933 Batch_id=96 Accuracy=99.60
+Loss=0.003104263683781028 Batch_id=128 Accuracy=99.48
+Loss=0.006452444940805435 Batch_id=160 Accuracy=99.40
+Loss=0.003437793580815196 Batch_id=192 Accuracy=99.45
+Loss=0.01716056652367115 Batch_id=224 Accuracy=99.45
+Loss=0.03105105459690094 Batch_id=256 Accuracy=99.43
+Loss=0.006560713052749634 Batch_id=288 Accuracy=99.45
+Loss=0.0016082370420917869 Batch_id=320 Accuracy=99.43
+Loss=0.05719862878322601 Batch_id=352 Accuracy=99.38
+Loss=0.0014837488997727633 Batch_id=384 Accuracy=99.35
+Loss=0.006536279805004597 Batch_id=416 Accuracy=99.35
+Loss=0.0042696441523730755 Batch_id=448 Accuracy=99.36
+Loss=0.02406555786728859 Batch_id=480 Accuracy=99.35
+Loss=0.000420635798946023 Batch_id=512 Accuracy=99.35
+Loss=0.01395594421774149 Batch_id=544 Accuracy=99.32
+Loss=0.0033165193162858486 Batch_id=576 Accuracy=99.33
+Loss=0.00966330710798502 Batch_id=608 Accuracy=99.34
+Loss=0.0025131143629550934 Batch_id=640 Accuracy=99.33
+Loss=0.009126289747655392 Batch_id=672 Accuracy=99.33
+Loss=0.007561902515590191 Batch_id=704 Accuracy=99.33
+Loss=0.02057189866900444 Batch_id=736 Accuracy=99.32
+Loss=0.006417585536837578 Batch_id=768 Accuracy=99.33
+Loss=0.03887742757797241 Batch_id=800 Accuracy=99.32
+Loss=0.00571192754432559 Batch_id=832 Accuracy=99.32
+Loss=0.0008870395831763744 Batch_id=864 Accuracy=99.32
+Loss=0.08494684845209122 Batch_id=896 Accuracy=99.32
+Loss=0.012469569221138954 Batch_id=928 Accuracy=99.33
+
+Test set: Average loss: 0.0006, Accuracy: 9889/10000 (98.89%)
+
+EPOCH: 10
+Loss=0.010733308270573616 Batch_id=0 Accuracy=100.00
+Loss=0.03381574898958206 Batch_id=32 Accuracy=99.43
+Loss=0.003817455843091011 Batch_id=64 Accuracy=99.33
+Loss=0.0018327643629163504 Batch_id=96 Accuracy=99.47
+Loss=0.003258125390857458 Batch_id=128 Accuracy=99.53
+Loss=0.01916716992855072 Batch_id=160 Accuracy=99.48
+Loss=0.007786277681589127 Batch_id=192 Accuracy=99.49
+Loss=0.0006988205714151263 Batch_id=224 Accuracy=99.46
+Loss=0.0007234701188281178 Batch_id=256 Accuracy=99.43
+Loss=0.004446083214133978 Batch_id=288 Accuracy=99.45
+Loss=0.0007585612474940717 Batch_id=320 Accuracy=99.45
+Loss=0.035108890384435654 Batch_id=352 Accuracy=99.42
+Loss=0.02963714487850666 Batch_id=384 Accuracy=99.39
+Loss=0.015397857874631882 Batch_id=416 Accuracy=99.39
+Loss=0.013893473893404007 Batch_id=448 Accuracy=99.39
+Loss=0.02015514485538006 Batch_id=480 Accuracy=99.37
+Loss=0.02547948807477951 Batch_id=512 Accuracy=99.35
+Loss=0.00445006787776947 Batch_id=544 Accuracy=99.35
+Loss=0.007132763043045998 Batch_id=576 Accuracy=99.35
+Loss=0.003298395313322544 Batch_id=608 Accuracy=99.35
+Loss=0.00039970583748072386 Batch_id=640 Accuracy=99.35
+Loss=0.00997503474354744 Batch_id=672 Accuracy=99.33
+Loss=0.043954622000455856 Batch_id=704 Accuracy=99.33
+Loss=0.017675848677754402 Batch_id=736 Accuracy=99.32
+Loss=0.022231126204133034 Batch_id=768 Accuracy=99.32
+Loss=0.0004637558595277369 Batch_id=800 Accuracy=99.32
+Loss=0.0006985522340983152 Batch_id=832 Accuracy=99.32
+Loss=0.10365982353687286 Batch_id=864 Accuracy=99.33
+Loss=0.030278675258159637 Batch_id=896 Accuracy=99.33
+Loss=0.014704940840601921 Batch_id=928 Accuracy=99.33
+
+Test set: Average loss: 0.0007, Accuracy: 9845/10000 (98.45%)
+
+EPOCH: 11
+Loss=0.017703650519251823 Batch_id=0 Accuracy=100.00
+Loss=0.005829325877130032 Batch_id=32 Accuracy=99.29
+Loss=0.13342496752738953 Batch_id=64 Accuracy=99.33
+Loss=0.004697018302977085 Batch_id=96 Accuracy=99.37
+Loss=0.03251132369041443 Batch_id=128 Accuracy=99.31
+Loss=0.0010486084502190351 Batch_id=160 Accuracy=99.40
+Loss=0.09381911158561707 Batch_id=192 Accuracy=99.44
+Loss=0.06082826107740402 Batch_id=224 Accuracy=99.45
+Loss=0.018434766680002213 Batch_id=256 Accuracy=99.43
+Loss=0.02246682532131672 Batch_id=288 Accuracy=99.44
+Loss=0.001669490709900856 Batch_id=320 Accuracy=99.45
+Loss=0.06129639223217964 Batch_id=352 Accuracy=99.44
+Loss=0.031101545318961143 Batch_id=384 Accuracy=99.42
+Loss=0.010442342609167099 Batch_id=416 Accuracy=99.41
+Loss=0.0030830574687570333 Batch_id=448 Accuracy=99.39
+Loss=0.002300855005159974 Batch_id=480 Accuracy=99.38
+Loss=0.007157671265304089 Batch_id=512 Accuracy=99.39
+Loss=0.00011742713104467839 Batch_id=544 Accuracy=99.40
+Loss=0.06558455526828766 Batch_id=576 Accuracy=99.42
+Loss=0.005145326256752014 Batch_id=608 Accuracy=99.42
+Loss=0.009568514302372932 Batch_id=640 Accuracy=99.43
+Loss=0.009725837036967278 Batch_id=672 Accuracy=99.44
+Loss=0.08280736207962036 Batch_id=704 Accuracy=99.42
+Loss=0.001992020523175597 Batch_id=736 Accuracy=99.43
+Loss=0.012201167643070221 Batch_id=768 Accuracy=99.42
+Loss=0.1440882384777069 Batch_id=800 Accuracy=99.42
+Loss=0.0408630296587944 Batch_id=832 Accuracy=99.41
+Loss=0.002520139329135418 Batch_id=864 Accuracy=99.41
+Loss=0.019728297367691994 Batch_id=896 Accuracy=99.40
+Loss=0.002450057305395603 Batch_id=928 Accuracy=99.38
+
+Test set: Average loss: 0.0005, Accuracy: 9900/10000 (99.00%)
+
+EPOCH: 12
+Loss=0.006487826816737652 Batch_id=0 Accuracy=100.00
+Loss=0.006274894345551729 Batch_id=32 Accuracy=99.62
+Loss=0.0003614567103795707 Batch_id=64 Accuracy=99.54
+Loss=0.0023067970760166645 Batch_id=96 Accuracy=99.48
+Loss=0.029682641848921776 Batch_id=128 Accuracy=99.47
+Loss=0.036067213863134384 Batch_id=160 Accuracy=99.47
+Loss=0.006263953633606434 Batch_id=192 Accuracy=99.44
+Loss=0.0014058311935514212 Batch_id=224 Accuracy=99.47
+Loss=0.005577586591243744 Batch_id=256 Accuracy=99.50
+Loss=0.0014020594535395503 Batch_id=288 Accuracy=99.51
+Loss=0.010469169355928898 Batch_id=320 Accuracy=99.50
+Loss=0.0010893737198784947 Batch_id=352 Accuracy=99.50
+Loss=0.0032217332627624273 Batch_id=384 Accuracy=99.51
+Loss=0.00991070456802845 Batch_id=416 Accuracy=99.48
+Loss=0.002247417811304331 Batch_id=448 Accuracy=99.47
+Loss=0.05044686421751976 Batch_id=480 Accuracy=99.45
+Loss=0.0054761916399002075 Batch_id=512 Accuracy=99.43
+Loss=0.0017948404420167208 Batch_id=544 Accuracy=99.44
+Loss=0.0006073909462429583 Batch_id=576 Accuracy=99.43
+Loss=0.0032896134071052074 Batch_id=608 Accuracy=99.43
+Loss=0.029159728437662125 Batch_id=640 Accuracy=99.42
+Loss=0.0015262278029695153 Batch_id=672 Accuracy=99.41
+Loss=0.0023843743838369846 Batch_id=704 Accuracy=99.42
+Loss=0.0007225655717775226 Batch_id=736 Accuracy=99.43
+Loss=0.03298303857445717 Batch_id=768 Accuracy=99.42
+Loss=0.04383966326713562 Batch_id=800 Accuracy=99.41
+Loss=0.04113752022385597 Batch_id=832 Accuracy=99.42
+Loss=0.004178968258202076 Batch_id=864 Accuracy=99.43
+Loss=0.026498187333345413 Batch_id=896 Accuracy=99.43
+Loss=0.0012015949469059706 Batch_id=928 Accuracy=99.43
+
+Test set: Average loss: 0.0004, Accuracy: 9908/10000 (99.08%)
+
+EPOCH: 13
+Loss=0.010981387458741665 Batch_id=0 Accuracy=100.00
+Loss=0.114292673766613 Batch_id=32 Accuracy=99.53
+Loss=0.0025604791007936 Batch_id=64 Accuracy=99.57
+Loss=0.02074509672820568 Batch_id=96 Accuracy=99.57
+Loss=0.0006748884334228933 Batch_id=128 Accuracy=99.54
+Loss=0.009000315330922604 Batch_id=160 Accuracy=99.54
+Loss=0.0024866387248039246 Batch_id=192 Accuracy=99.55
+Loss=0.0012071827659383416 Batch_id=224 Accuracy=99.56
+Loss=0.038867924362421036 Batch_id=256 Accuracy=99.51
+Loss=0.008140678517520428 Batch_id=288 Accuracy=99.52
+Loss=0.0018894328968599439 Batch_id=320 Accuracy=99.53
+Loss=0.018200192600488663 Batch_id=352 Accuracy=99.52
+Loss=0.00012139210593886673 Batch_id=384 Accuracy=99.53
+Loss=0.0026193796657025814 Batch_id=416 Accuracy=99.55
+Loss=0.014273618347942829 Batch_id=448 Accuracy=99.54
+Loss=0.0014125576708465815 Batch_id=480 Accuracy=99.53
+Loss=0.033226966857910156 Batch_id=512 Accuracy=99.50
+Loss=0.0006243472453206778 Batch_id=544 Accuracy=99.49
+Loss=0.0009554894058965147 Batch_id=576 Accuracy=99.50
+Loss=0.004404262639582157 Batch_id=608 Accuracy=99.52
+Loss=0.005753605160862207 Batch_id=640 Accuracy=99.51
+Loss=0.0035166761372238398 Batch_id=672 Accuracy=99.51
+Loss=0.0062393019907176495 Batch_id=704 Accuracy=99.52
+Loss=0.06000611558556557 Batch_id=736 Accuracy=99.51
+Loss=0.00295452238060534 Batch_id=768 Accuracy=99.51
+Loss=0.00460165087133646 Batch_id=800 Accuracy=99.51
+Loss=0.042334821075201035 Batch_id=832 Accuracy=99.51
+Loss=0.014157887548208237 Batch_id=864 Accuracy=99.52
+Loss=0.012948513962328434 Batch_id=896 Accuracy=99.53
+Loss=0.012432534247636795 Batch_id=928 Accuracy=99.52
+
+Test set: Average loss: 0.0005, Accuracy: 9899/10000 (98.99%)
+
+EPOCH: 14
+Loss=0.001018522772938013 Batch_id=0 Accuracy=100.00
+Loss=0.013971835374832153 Batch_id=32 Accuracy=99.72
+Loss=0.0018768314039334655 Batch_id=64 Accuracy=99.62
+Loss=0.003795502008870244 Batch_id=96 Accuracy=99.65
+Loss=0.03482229262590408 Batch_id=128 Accuracy=99.66
+Loss=0.0007249026093631983 Batch_id=160 Accuracy=99.64
+Loss=0.002860183361917734 Batch_id=192 Accuracy=99.55
+Loss=0.06250163912773132 Batch_id=224 Accuracy=99.54
+Loss=0.0001835395669331774 Batch_id=256 Accuracy=99.56
+Loss=0.017868084833025932 Batch_id=288 Accuracy=99.54
+Loss=0.0003338928217999637 Batch_id=320 Accuracy=99.54
+Loss=0.0007249026093631983 Batch_id=160 Accuracy=99.64
+Loss=0.002860183361917734 Batch_id=192 Accuracy=99.55
+Loss=0.06250163912773132 Batch_id=224 Accuracy=99.54
+Loss=0.0001835395669331774 Batch_id=256 Accuracy=99.56
+Loss=0.017868084833025932 Batch_id=288 Accuracy=99.54
+Loss=0.0003338928217999637 Batch_id=320 Accuracy=99.54
+Loss=6.51407171972096e-05 Batch_id=352 Accuracy=99.55
+Loss=0.01891961880028248 Batch_id=384 Accuracy=99.55
+Loss=0.0250617153942585 Batch_id=416 Accuracy=99.56
+Loss=0.0064162444323301315 Batch_id=448 Accuracy=99.55
+Loss=0.01688561961054802 Batch_id=480 Accuracy=99.54
+Loss=0.01071043498814106 Batch_id=512 Accuracy=99.53
+Loss=0.005668425001204014 Batch_id=544 Accuracy=99.53
+Loss=0.0024845849256962538 Batch_id=576 Accuracy=99.52
+Loss=0.007435952313244343 Batch_id=608 Accuracy=99.53
+Loss=0.002860183361917734 Batch_id=192 Accuracy=99.55
+Loss=0.06250163912773132 Batch_id=224 Accuracy=99.54
+Loss=0.0001835395669331774 Batch_id=256 Accuracy=99.56
+Loss=0.017868084833025932 Batch_id=288 Accuracy=99.54
+Loss=0.0003338928217999637 Batch_id=320 Accuracy=99.54
+Loss=6.51407171972096e-05 Batch_id=352 Accuracy=99.55
+Loss=0.01891961880028248 Batch_id=384 Accuracy=99.55
+Loss=0.0250617153942585 Batch_id=416 Accuracy=99.56
+Loss=0.0064162444323301315 Batch_id=448 Accuracy=99.55
+Loss=0.01688561961054802 Batch_id=480 Accuracy=99.54
+Loss=0.01071043498814106 Batch_id=512 Accuracy=99.53
+Loss=0.005668425001204014 Batch_id=544 Accuracy=99.53
+Loss=0.0024845849256962538 Batch_id=576 Accuracy=99.52
+Loss=0.007435952313244343 Batch_id=608 Accuracy=99.53
+Loss=0.0001835395669331774 Batch_id=256 Accuracy=99.56
+Loss=0.017868084833025932 Batch_id=288 Accuracy=99.54
+Loss=0.0003338928217999637 Batch_id=320 Accuracy=99.54
+Loss=6.51407171972096e-05 Batch_id=352 Accuracy=99.55
+Loss=0.01891961880028248 Batch_id=384 Accuracy=99.55
+Loss=0.0250617153942585 Batch_id=416 Accuracy=99.56
+Loss=0.0064162444323301315 Batch_id=448 Accuracy=99.55
+Loss=0.01688561961054802 Batch_id=480 Accuracy=99.54
+Loss=0.01071043498814106 Batch_id=512 Accuracy=99.53
+Loss=0.005668425001204014 Batch_id=544 Accuracy=99.53
+Loss=0.0024845849256962538 Batch_id=576 Accuracy=99.52
+Loss=0.007435952313244343 Batch_id=608 Accuracy=99.53
+Loss=6.51407171972096e-05 Batch_id=352 Accuracy=99.55
+Loss=0.01891961880028248 Batch_id=384 Accuracy=99.55
+Loss=0.0250617153942585 Batch_id=416 Accuracy=99.56
+Loss=0.0064162444323301315 Batch_id=448 Accuracy=99.55
+Loss=0.01688561961054802 Batch_id=480 Accuracy=99.54
+Loss=0.01071043498814106 Batch_id=512 Accuracy=99.53
+Loss=0.005668425001204014 Batch_id=544 Accuracy=99.53
+Loss=0.0024845849256962538 Batch_id=576 Accuracy=99.52
+Loss=0.007435952313244343 Batch_id=608 Accuracy=99.53
+Loss=0.0250617153942585 Batch_id=416 Accuracy=99.56
+Loss=0.0064162444323301315 Batch_id=448 Accuracy=99.55
+Loss=0.01688561961054802 Batch_id=480 Accuracy=99.54
+Loss=0.01071043498814106 Batch_id=512 Accuracy=99.53
+Loss=0.005668425001204014 Batch_id=544 Accuracy=99.53
+Loss=0.0024845849256962538 Batch_id=576 Accuracy=99.52
+Loss=0.007435952313244343 Batch_id=608 Accuracy=99.53
+Loss=0.005668425001204014 Batch_id=544 Accuracy=99.53
+Loss=0.0024845849256962538 Batch_id=576 Accuracy=99.52
+Loss=0.007435952313244343 Batch_id=608 Accuracy=99.53
+Loss=0.0024845849256962538 Batch_id=576 Accuracy=99.52
+Loss=0.007435952313244343 Batch_id=608 Accuracy=99.53
+Loss=0.06565965712070465 Batch_id=640 Accuracy=99.52
+Loss=0.06565965712070465 Batch_id=640 Accuracy=99.52
+Loss=0.0007963016978465021 Batch_id=672 Accuracy=99.52
+Loss=0.0007963016978465021 Batch_id=672 Accuracy=99.52
+Loss=0.005725163966417313 Batch_id=704 Accuracy=99.51
+Loss=0.005725163966417313 Batch_id=704 Accuracy=99.51
+Loss=0.002955135889351368 Batch_id=736 Accuracy=99.53
+Loss=0.007474275305867195 Batch_id=768 Accuracy=99.52
+Loss=0.011688465252518654 Batch_id=800 Accuracy=99.51
+Loss=0.00021468581689987332 Batch_id=832 Accuracy=99.51
+Loss=0.00303575093857944 Batch_id=864 Accuracy=99.52
+Loss=0.00014841898519080132 Batch_id=896 Accuracy=99.53
+Loss=0.012704567983746529 Batch_id=928 Accuracy=99.52
+
+Test set: Average loss: 0.0006, Accuracy: 9901/10000 (99.01%)
