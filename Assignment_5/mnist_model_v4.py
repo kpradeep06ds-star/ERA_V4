@@ -1,4 +1,4 @@
-# mnist_ccmccmccp.py
+# mnist_model_v4.py
 import math
 import argparse
 from dataclasses import dataclass

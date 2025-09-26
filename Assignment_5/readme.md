@@ -3,6 +3,11 @@
 A compact CNN for MNIST classification that achieves **99.54% accuracy** within **20 epochs** and **<20k parameters**.  
 This design follows the pattern:
 
+## Table of Contents
+- [Architecture](#-architecture)
+- [Usage](#-usage)
+- [Training Logs](#-training-logs)
+
 
 Where:
 - **C** = Convolution + BatchNorm + ReLU  
@@ -65,8 +70,13 @@ Arguments
 --no-tta : disable Test-Time Augmentation
 
 The script saves the final EMA weights as mnist_ccmccmccp_ema.pt
+```
+---
 
-## Logs - Default Run
+## 📊 Training Logs
+
+**Default Run**
+
 ```
 Epoch 01 | test loss 2.3139 | test acc 10.11%
 Epoch 02 | test loss 2.2978 | test acc  9.80%
@@ -95,7 +105,7 @@ Total parameters: 15634
 
 ```
 import torch
-from mnist_ccmccmccp import CCMCCMCCP
+from mnist_model_v4 import CCMCCMCCP
 
 model = CCMCCMCCP()
 model.load_state_dict(torch.load("mnist_ccmccmccp_ema.pt"))
