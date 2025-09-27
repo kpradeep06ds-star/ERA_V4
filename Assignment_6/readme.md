@@ -80,7 +80,7 @@ The work is divided into three scenarios:
 
 Output
 
-[Scenario 1 Output](./Scenario_1/Output.png)  
+[Scenario 1 Output](./Scenario_3/Output.png)  
 ---
 
 ## 🔑 Key Learnings
