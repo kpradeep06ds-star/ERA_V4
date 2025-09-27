@@ -95,3 +95,9 @@ The work is divided into three scenarios:
 * Robustness and consistency require augmentation, regularization, and learning rate strategies.
 
 ---
+
+## Logs
+
+[Scenario 1 Log](./Scenario_1/scenario_1_log)  
+[Scenario 2 Log](./Scenario_2/scenario_2_log)  
+[Scenario 3 Log](./Scenario_3/scenario_3_log)
