@@ -49,6 +49,7 @@ The work is divided into three scenarios:
 * Achieved **~99% accuracy by epoch 12**.
 * Served as baseline for understanding receptive field growth.
 
+```
 Scenario 1 —  RF
 
 Layers that affect RF (H×W after each):
@@ -63,7 +64,7 @@ Conv1×1 -> 7×7 -> r=16
 Conv7×7 -> 1×1 -> r=28
 
 Final RF = 28 px (exactly the full 28×28 input).
-
+```
 
 
 ---
