@@ -49,6 +49,23 @@ The work is divided into three scenarios:
 * Achieved **~99% accuracy by epoch 12**.
 * Served as baseline for understanding receptive field growth.
 
+Scenario 1 —  RF
+
+Layers that affect RF (H×W after each):
+Conv3×3 -> 26×26 -> r=3, j=1
+Conv3×3 -> 24×24 -> r=5
+Conv3×3 -> 22×22 -> r=7
+MaxPool2×2,s2 -> 11×11 -> r=8, j=2
+Conv1×1 -> 11×11 -> r=8
+Conv3×3 -> 9×9 -> r=12
+Conv3×3 -> 7×7 -> r=16
+Conv1×1 -> 7×7 -> r=16
+Conv7×7 -> 1×1 -> r=28
+
+Final RF = 28 px (exactly the full 28×28 input).
+
+
+
 ---
 
 ### Scenario 2 – Parameter Efficient CNN
@@ -57,6 +74,21 @@ The work is divided into three scenarios:
 * Maintained **~99% accuracy** with **fewer parameters** compared to Scenario 1.
 * Improved training stability and reduced computation.
 
+
+Scenario 2 —  RF
+```
+Conv5×5,s1 -> *r = 1 + (5−1)1 = 5, j = 1
+Conv3×3,s1  -> *r = 5 + (3−1)1 = 7, j = 1
+MaxPool2×2,s2  -> *r = 7 + (2−1)1 = 8, j = 2
+Conv3×3,s1  -> *r = 8 + (3−1)2 = 12, j = 2
+Conv3×3,s1  -> *r = 12 + (3−1)2 = 16, j = 2
+MaxPool2×2,s2  -> *r = 16 + (2−1)2 = 18, j = 4
+Conv3×3,s1  -> *r = 18 + (3−1)4 = 26, j = 4
+Conv3×3,s1  -> *r = 26 + (3−1)4 = 34, j = 4
+GAP 7×7, s=7  -> *r = 34 + (7−1)4 = 58, j = 28
+Linear -> r unchanged = 58
+
+```
 ---
 
 ### Scenario 3 – High-Performance Consistent CNN
@@ -77,6 +109,22 @@ The work is divided into three scenarios:
   * **Epoch 14:** 99.44%
 
 * Reached **≥99.4% accuracy consistently across runs**.
+
+Scenario 3 —  RF
+```
+Conv3×3 -> r=3, j=1
+Conv3×3 -> r=5
+Conv1×1 -> r=5
+MaxPool2×2 -> r=6, j=2
+Conv3×3 -> r=10
+Conv3×3 -> r=14
+Conv3×3 -> r=18
+Conv3×3 -> r=22
+AvgPool 6×6, s=6 -> r=22 + (6−1)×2 = 32, j=12
+Conv1×1 -> r=32
+
+Final RF = 32 px (fully covers 28×28).
+```
 ---
 
 ### Output
