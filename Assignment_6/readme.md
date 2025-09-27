@@ -65,6 +65,8 @@ Conv7×7 -> 1×1 -> r=28
 
 Final RF = 28 px (exactly the full 28×28 input).
 ```
+Accuracy and logs are present here
+[Scenario 1 Log](./Scenario_1/scenario_1_log)  
 
 
 ---
@@ -90,6 +92,9 @@ GAP 7×7, s=7  -> *r = 34 + (7−1)4 = 58, j = 28
 Linear -> r unchanged = 58
 
 ```
+Accuracy and logs are present here
+[Scenario 2 Log](./Scenario_2/scenario_2_log)  
+
 ---
 
 ### Scenario 3 – High-Performance Consistent CNN
@@ -126,6 +131,8 @@ Conv1×1 -> r=32
 
 Final RF = 32 px (fully covers 28×28).
 ```
+Accuracy and logs are present here
+[Scenario 3 Log](./Scenario_3/Scenario_3_log)
 ---
 
 ### Output
