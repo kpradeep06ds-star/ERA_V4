@@ -131,8 +131,10 @@ Conv1×1 -> r=32
 
 Final RF = 32 px (fully covers 28×28).
 ```
+
 Accuracy and logs are present here
 [Scenario 3 Log](./Scenario_3/Scenario_3_log)
+
 ---
 
 ### Output
