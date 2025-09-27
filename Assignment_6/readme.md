@@ -78,6 +78,9 @@ The work is divided into three scenarios:
 
 * Reached **≥99.4% accuracy consistently across runs**.
 
+Output
+
+[Scenario 1 Output](./Scenario_1/Output.png)  
 ---
 
 ## 🔑 Key Learnings
