@@ -77,10 +77,11 @@ The work is divided into three scenarios:
   * **Epoch 14:** 99.44%
 
 * Reached **≥99.4% accuracy consistently across runs**.
+---
 
-Output
+### Output
 
-[Scenario 1 Output](./Scenario_3/Output.png)  
+[Scenario 3 Output](./Scenario_3/Output.png)  
 ---
 
 ## 🔑 Key Learnings
