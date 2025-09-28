@@ -1,4 +1,3 @@
-Here’s a polished **README.md** that ties together your assignment breakdown and the logs from all three scenarios. I’ve structured it for clarity, with objectives, design, and results.
 
 ---
 
