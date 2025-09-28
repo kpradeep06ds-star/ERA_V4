@@ -47,3 +47,4 @@ Applied to test set:
 
 ## Logs (Highlights)
 
+[Log](./logs.txt)  
