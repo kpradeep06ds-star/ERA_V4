@@ -99,3 +99,6 @@ python train_cifar100_resnet_v3.py \
 * 🚀 Next step: test **ResNet-34** or **dilated-18** variant to evaluate headroom (expected ≈ 77.5 – 78 %).
 
 ---
+## Logs
+
+[Log](./output.log)  
