@@ -326,7 +326,7 @@ The **Top-1** and **Top-5** accuracy steadily improved across training.
 Top-1 grew from ~15% in the first epoch to **77.01% at epoch 90**, while Top-5 reached **93.6%**.
 The curve shows a smooth rise followed by mild saturation — a hallmark of good convergence under cosine annealing.
 
-![Validation Accuracy](accuracy_vs_epoch.png)
+![Validation Accuracy](./images/accuracy_vs_epoch.png)
 
 ---
 
@@ -335,7 +335,7 @@ The curve shows a smooth rise followed by mild saturation — a hallmark of good
 Training loss dropped **smoothly and monotonically** from ~0.022 to ~0.010 by epoch 90,
 showing that the model continued learning efficiently without overfitting spikes or oscillations.
 
-![Training Loss](loss_vs_epoch.png)
+![Training Loss](./images/loss_vs_epoch.png)
 
 ---
 
