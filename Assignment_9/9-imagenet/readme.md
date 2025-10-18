@@ -307,9 +307,14 @@ Here’s a concise, publication-ready Markdown summary to accompany your two tra
 | **Total Training Time** | **~ 2.5 days** |
 
 ## 🧪 Inference & Evaluation
-You can evaluate `model_best.pth` or `model_swa.pth` locally using the 50,000-image ImageNet validation dataset.  
+```
+`You can evaluate `model_best.pth` or `model_swa.pth` locally using the 50,000-image ImageNet validation dataset.  
 Each checkpoint is approximately **200 MB**, which makes it easy to run evaluation on a single GPU or even a CPU system.  
 Example evaluation scripts can load the checkpoint and compute Top-1 / Top-5 accuracy in under an hour locally.
+```
+
+
+
 You can use the code: ![code](eval_script_score.py)
 ---
 
