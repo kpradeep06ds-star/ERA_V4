@@ -1,0 +1,8 @@
+block,param_count,percent
+layer4,14987274,58.52
+layer3,7118867,27.8
+fc,2049000,8.0
+layer2,1226765,4.79
+layer1,218634,0.85
+conv1,9408,0.04
+bn1,257,0.0
