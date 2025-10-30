@@ -14,7 +14,7 @@ Goal: Train a ResNet-50-style convolutional model from scratch on ImageNet-1K us
 
 ImageNet contains **1000 object classes**. To tune the model efficiently, I first trained on a smaller dataset — **ImageNet-100** (a 100-class subset) — to understand the learning-rate range and the overall behavior of the training loop. This helped identify the approximate **minimum and maximum learning rates** that worked well with cosine annealing. Once the learning schedule was validated, I used **exactly the same codebase** to train on the **full 1000-class ImageNet-1K**, changing only the configuration file (batch size, total epochs, and data paths).
 
-The ImageNet data was stored on an **EBS volume (420 GB)**, which is a detachable “plug-and-play” drive that can be mounted on any Linux EC2 instance. In my setup, the instance type was **g5dn.2xlarge** (NVIDIA A10G GPU). The entire 90-epoch training run took about **2.5 days**.
+The ImageNet data was stored on an **EBS volume (420 GB)**, which is a detachable “plug-and-play” drive that can be mounted on any Linux EC2 instance. In my setup, the instance type was **g5dn.2xlarge** (NVIDIA A10G GPU). The entire 90-epoch training run took about **41 hours**.
 Since the dataset was in **WebDataset (WDS)** format downloaded from Hugging Face, data loading was **I/O-bound** rather than compute-bound. This meant the number of data-loader workers directly affected throughput. The g5dn.2xlarge instance can handle up to eight workers, but with eight, the heavy I/O traffic caused SSH lag and sluggish responsiveness. After experimenting, **six workers** gave the best balance between throughput and stability. I also replaced the standard Pillow library with **pillow-simd**, which speeds up image decoding on AVX2-capable CPUs. With all these optimizations, each epoch ran in **35–38 minutes**, a major improvement over the baseline.
 
 The PyTorch setup includes standard **image transformations and normalization** to improve generalization. The core network is a **ResNet-50 architecture** implemented from scratch (not a pretrained model). Training used a **cosine-annealing learning-rate schedule** combined with **EMA (Exponential Moving Average)** for the first 80 epochs and **SWA (Stochastic Weight Averaging)** for the final 10 epochs.
@@ -202,6 +202,8 @@ hf download timm/imagenet-1k-wds \
 
 ------
 
+**Note**: **Batch size:** **Epoch 1 = 320**, **Epochs 2–90 = 256**, It turned out that having a large batch size have slower runtime in my case. Hence from 2nd epoch onwards batch size was reduced. *(Config default is 256; the first epoch was intentionally run at 320.)*
+
 ## 🔄 Reproducibility & Resume Guide
 
 Reproducibility and resuming have been designed as first-class features in `train.py`.
@@ -287,28 +289,29 @@ Here’s a concise, publication-ready Markdown summary to accompany your two tra
 
 ## 📊 Training Progress Summary
 
-| Metric                     | Description                                                                              |
-| -------------------------- | ---------------------------------------------------------------------------------------- |
-| **Training Duration**      | 90 epochs (~2.5 days on EC2 `g5dn.2x`)                                                   |
-| **Best Checkpoint**        | Epoch **90**, with **Top-1 = 77.01%**, **Top-5 = 93.59%**                                |
-| **Final Train Loss**       | ~0.0104                                                                                  |
+| Metric                     | Description                                                  |
+| -------------------------- | ------------------------------------------------------------ |
+| **Training Duration**      | 90 epochs (~41 hours on EC2 `g5dn.2xlarge`)                  |
+| **Best Checkpoint**        | Epoch **90**, with **Top-1 = 77.01%**, **Top-5 = 93.59%** (Validation Metrics) |
+| **Final Train Loss**       | ~0.0104 (Recorded in logs)                                   |
+| **Final Train Accuracy**   | **Approx. Training Accuracy (Top-1 %)** ≈ 78–80 % (derived from final cross-entropy ≈ 0.010 with label smoothing = 0.1). Please note that, training Accuracy (Top-1 %) was not logged and hence approximated number given here |
 | **Learning Rate Schedule** | Cosine annealing with warmup → decay to near-zero; last 10 epochs averaged using **SWA** |
-| **Optimizer**              | SGD (momentum 0.9, weight decay 1e-4)                                                    |
+| **Optimizer**              | SGD (momentum 0.9, weight decay 1e-4)                        |
 
 
 
 | Metric | Value |
 |--------|-------:|
-| **Best Top-1 Accuracy** | **77.01 %** |
-| **Best Top-5 Accuracy** | **93.59 %** |
+| **Best Top-1 Accuracy - Validation** | **77.01 %** |
+| **Best Top-5 Accuracy- Validation** | **93.59 %** |
 | **Final Train Loss** | **0.0104** |
 | **Total Epochs** | **90** |
 | **Instance Time / Epoch** | **≈ 35–38 min** |
-| **Total Training Time** | **~ 2.5 days** |
+| **Total Training Time** | **~ 41 hours** |
 
 ## 🧪 Inference & Evaluation
 ```
-You can evaluate `model_best.pth` or `model_swa.pth` locally using the 50,000-image ImageNet validation dataset.  
+We can evaluate `model_best.pth` or `model_swa.pth` locally using the 50,000-image ImageNet validation dataset.  
 Each checkpoint is approximately **200 MB**, which makes it easy to run evaluation on a single GPU or even a CPU system.  
 Example evaluation scripts can load the checkpoint and compute Top-1 / Top-5 accuracy in under an hour locally.
 ```
