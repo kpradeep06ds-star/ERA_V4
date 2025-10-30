@@ -180,25 +180,25 @@ hf download timm/imagenet-1k-wds \
 
 ## ⚙️ Configuration (`config.py`)
 
-| Key                    | Description / Value        |
-| ---------------------- | -------------------------- |
-| `epochs`               | 100                        |
-| `batch_size`           | 320                        |
-| `base_lr`              | 0.1 (scaled by batch size) |
-| `cosine_min_lr`        | 1e-4                       |
-| `warmup_epochs`        | 5                          |
-| `swa_last_epochs`      | 20                         |
-| `swa_lr_mult`          | 0.5                        |
-| `momentum`             | 0.9                        |
-| `weight_decay`         | 1e-4                       |
-| `label_smoothing`      | 0.1                        |
-| `use_amp`              | True                       |
-| `use_randaugment`      | True                       |
-| `random_erasing_p`     | 0.25                       |
-| `checkpoint_frequency` | 5                          |
-| `data_format`          | `wds`                      |
-| `num_workers`          | 6                          |
-| `prefetch_factor`      | 4                          |
+| Key                    | Description / Value                       |
+| ---------------------- | ----------------------------------------- |
+| `epochs`               | 100                                       |
+| `batch_size`           | 256 (epoch 2 to epoch 90) , 320 (epoch 1) |
+| `base_lr`              | 0.1 (scaled by batch size)                |
+| `cosine_min_lr`        | 1e-4                                      |
+| `warmup_epochs`        | 5                                         |
+| `swa_last_epochs`      | 20                                        |
+| `swa_lr_mult`          | 0.5                                       |
+| `momentum`             | 0.9                                       |
+| `weight_decay`         | 1e-4                                      |
+| `label_smoothing`      | 0.1                                       |
+| `use_amp`              | True                                      |
+| `use_randaugment`      | True                                      |
+| `random_erasing_p`     | 0.25                                      |
+| `checkpoint_frequency` | 5                                         |
+| `data_format`          | `wds`                                     |
+| `num_workers`          | 6                                         |
+| `prefetch_factor`      | 4                                         |
 
 ------
 
