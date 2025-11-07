@@ -81,10 +81,10 @@ Typical results:
 ### 🚀 Deployment
 
 The trained tokenizer (`tokenizer.json`) is hosted at:
-🔗 **[justpradeep/awadhi-hindi-bpe-8k](https://huggingface.co/justpradeep/awadhi-hindi-bpe-8k)**
+🔗 **[justpradeep/awadhi-hindi-bpe-8k](https://huggingface.co/justpradeep/awadhi-hindi-bpe-8k/tree/main)**
 
 A demo Gradio app is available here:
-🔗 **[justpradeep/awadhi-hindi-bpe-demo](https://huggingface.co/spaces/justpradeep/awadhi-hindi-bpe-demo)**
+🔗 **[justpradeep/awadhi-hindi-bpe-demo](https://huggingface.co/spaces/justpradeep/hindi-awadhi-bpe-tokenizer)**
 It loads the tokenizer via `hf_hub_download` and visualizes tokens and IDs.
 
 ---
