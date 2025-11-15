@@ -193,4 +193,4 @@ This project demonstrates:
 
 # Logs
 
-[./out_124m_mem/train.log](TrainLog)
+[Training Log](./out_124m_mem/train.log)
