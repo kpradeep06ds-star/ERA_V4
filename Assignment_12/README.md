@@ -35,7 +35,7 @@ The architecture follows the classic **GPT-2 Small (124M)** configuration:
 
 ### ✔️ Components Implemented
 
-Your implementation includes:
+Implementation includes:
 
 * **Causal self-attention** (masked, scaled dot-product)
 * **Feedforward MLP with GELU activation**
@@ -135,7 +135,7 @@ Runs a local Gradio app where you can:
 
 # 🚀 HuggingFace Spaces Deployment
 
-Your Space files:
+HF Space files:
 
 ```
 app.py
@@ -153,9 +153,14 @@ HuggingFace will automatically:
 * Run the app
 * Serve the model via Web UI
 
-Example Space (your link):
+HuggingFace Space :
 🔗 [https://huggingface.co/spaces/justpradeep/shakespeare](https://huggingface.co/spaces/justpradeep/shakespeare)
 
+Model File: 
+🔗 [model](https://huggingface.co/spaces/justpradeep/shakespeare/blob/main/out_124m_mem/model.pt)
+
+Screenshot:
+🔗 [Screenshot Working](./out_124m_mem/working_screenshot.png)
 ---
 
 # ✨ Why Overfitting?
