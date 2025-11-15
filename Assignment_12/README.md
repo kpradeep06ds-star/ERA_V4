@@ -154,12 +154,15 @@ HuggingFace will automatically:
 * Serve the model via Web UI
 
 HuggingFace Space :
+
 🔗 [https://huggingface.co/spaces/justpradeep/shakespeare](https://huggingface.co/spaces/justpradeep/shakespeare)
 
-Model File: 
+Model File:
+
 🔗 [model](https://huggingface.co/spaces/justpradeep/shakespeare/blob/main/out_124m_mem/model.pt)
 
 Screenshot:
+
 🔗 [Screenshot Working](./out_124m_mem/working_screenshot.png)
 ---
 
