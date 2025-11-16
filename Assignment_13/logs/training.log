@@ -1,0 +1,191 @@
+2025-11-16 14:51:22 - INFO - 
+Step 0 | Loss: 10.6740 | Tokens/sec: 1127.50
+2025-11-16 14:51:22 - INFO - Sample text: Once upon a time
+
+ HE fiction
+ Band algae
+
+://
+
+
+
+aan
+
+ fatty elevation tribal
+ Prepare
+
+
+ clergy
+ scoring
+
+
+
+
+
+ celebr
+
+
+
+
+
+ anticipation
+ photographer awaiting transparency spectrom shred authoritarian
+
+2025-11-16 14:51:35 - INFO - 
+Step 500 | Loss: 0.0004 | Tokens/sec: 17066.00
+2025-11-16 14:51:35 - INFO - Sample text: Once upon a time Citizen:
+ any further, hear me speak.
+
+All:
+Speak, speak.
+
+First Citizen:
+You are all resolved rather to die than to famish?
+
+All:
+Resolved. resolved.
+
+
+
+2025-11-16 14:51:49 - INFO - 
+Step 1000 | Loss: 0.0002 | Tokens/sec: 15503.95
+2025-11-16 14:51:49 - INFO - Sample text: Once upon a time Citizen:
+ any further, hear me speak.
+
+All:
+Speak, speak.
+
+First Citizen:
+You are all resolved rather to die than to famish?
+
+All:
+Resolved. resolved.
+
+
+
+2025-11-16 14:52:02 - INFO - 
+Step 1500 | Loss: 0.0001 | Tokens/sec: 18285.79
+2025-11-16 14:52:02 - INFO - Sample text: Once upon a time Citizen:
+ any further, hear me speak.
+
+All:
+Speak, speak.
+
+First Citizen:
+You are all resolved rather to die than to famish?
+
+All:
+Resolved. resolved.
+
+
+
+2025-11-16 14:52:15 - INFO - 
+Step 2000 | Loss: 0.0001 | Tokens/sec: 17065.73
+2025-11-16 14:52:15 - INFO - Sample text: Once upon a time Citizen:
+Before we, hear me speak.
+
+All:
+Speak, speak.
+
+First Citizen:
+You are all resolved rather to die than to famish?
+
+All:
+Resolved. resolved.
+
+
+
+2025-11-16 14:52:29 - INFO - 
+Step 2500 | Loss: 0.0001 | Tokens/sec: 17067.36
+2025-11-16 14:52:29 - INFO - Sample text: Once upon a time Citizen:
+ any further, hear me speak.
+
+All:
+Speak, speak.
+
+First Citizen:
+You are all resolved rather to die than to famish?
+
+All:
+Resolved. resolved.
+
+
+
+2025-11-16 14:52:43 - INFO - 
+Step 3000 | Loss: 0.0000 | Tokens/sec: 15999.97
+2025-11-16 14:52:43 - INFO - Sample text: Once upon a time Citizen:
+ any further, hear me speak.
+
+All:
+Speak, speak.
+
+First Citizen:
+You are all resolved rather to die than to famish?
+
+All:
+Resolved. resolved.
+
+
+
+2025-11-16 14:52:57 - INFO - 
+Step 3500 | Loss: 0.0000 | Tokens/sec: 15997.82
+2025-11-16 14:52:58 - INFO - Sample text: Once upon a time Citizen:
+ any further, hear me speak.
+
+All:
+Speak, speak.
+
+First Citizen:
+You are all resolved rather to die than to famish?
+
+All:
+Resolved. resolved.
+
+
+
+2025-11-16 14:53:12 - INFO - 
+Step 4000 | Loss: 0.0000 | Tokens/sec: 15999.97
+2025-11-16 14:53:12 - INFO - Sample text: Once upon a time Citizen:
+ any further, hear me speak.
+
+All:
+Speak, speak.
+
+First Citizen:
+You are all resolved rather to die than to famish?
+
+All:
+Resolved. resolved.
+
+
+
+2025-11-16 14:53:26 - INFO - 
+Step 4500 | Loss: 0.0000 | Tokens/sec: 12800.16
+2025-11-16 14:53:26 - INFO - Sample text: Once upon a time Citizen:
+ any further, hear me speak.
+
+All:
+Speak, speak.
+
+First Citizen:
+You are all resolved rather to die than to famish?
+
+All:
+Resolved. resolved.
+
+
+
+2025-11-16 14:53:40 - INFO - Completed initial 5000 steps training!
+2025-11-16 14:53:40 - INFO - 
+Loading checkpoint and continuing training...
+2025-11-16 14:53:41 - INFO - 
+Step 5000 | Loss: 0.0000
+2025-11-16 14:53:41 - INFO - 
+Step 5010 | Loss: 0.0000
+2025-11-16 14:53:41 - INFO - 
+Step 5020 | Loss: 0.0000
+2025-11-16 14:53:42 - INFO - 
+Step 5030 | Loss: 0.0000
+2025-11-16 14:53:42 - INFO - 
+Step 5040 | Loss: 0.0000
+2025-11-16 14:53:43 - INFO - Training completed!
