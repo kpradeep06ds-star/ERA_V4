@@ -7,19 +7,31 @@ This project implements training for a small language model based on the SmolLM2
 ```
 project_root/
 ├── config/
-│ └── model_config.py # Model and training configuration
+│   └── model_config.py         # Model + training hyperparameters
+│
 ├── model/
-│ ├── attention.py # Attention mechanism implementation
-│ ├── mlp.py # Multi-layer perceptron implementation
-│ ├── transformer.py # Transformer block implementation
-│ └── smolLM2.py # Main model architecture
+│   ├── attention.py            # Attention mechanism
+│   ├── mlp.py                  # Feed-forward / MLP block
+│   ├── transformer.py          # Transformer Block
+│   └── smolLM2.py              # SmolLM2 model definition
+│
 ├── training/
-│ └── dataset.py # Dataset handling and processing
+│   └── dataset.py              # TextDataset and data loading
+│
 ├── utils/
-│ ├── checkpoint.py # Checkpoint saving and loading
-│ └── generation.py # Text generation utilities
-├── main.py # Training script
-└── input.txt # Training data
+│   ├── checkpoint.py           # save_checkpoint / load_checkpoint
+│   ├── generation.py           # CLI / script generation helpers
+│   └── logger.py               # (if you added it) logging setup
+│
+├── datasets/
+│   └── input.txt               # Training corpus (used by TextDataset)
+│
+├── logs/
+│   └── training.log            # Logger output from main.py
+│
+├── main.py                     # Training + evaluation + checkpoint resume
+└── README.md                   # Full explanation, param counts, etc.
+
 ```
 
 ## Features
@@ -32,35 +44,75 @@ project_root/
 
 ## Training Results
 The model was trained for 5000 steps initially, followed by 50 additional fine-tuning steps. Key metrics:
+Here you go, split into the three segments you asked for 👇
 
-- Initial loss: 10.5829
-- Final loss: ~0.0000
-- Training speed: ~19,000-21,000 tokens/sec at peak
-- Total training time: ~2 minutes 16 seconds for 5000 steps
+---
 
-### Training Progress
-- Step 0: Loss = 10.5829
-- Step 500: Loss = 0.0004
-- Step 1000: Loss = 0.0001
-- Step 1500: Loss = 0.0001
-- Step 2000: Loss = 0.0001
-- Step 2500: Loss = 0.0000
-- Step 3000: Loss = 0.0000
-- Step 3500: Loss = 0.0000
-- Step 4000: Loss = 0.0000
-- Step 4500: Loss = 0.0000
-- Step 5000: Loss = 0.0000
+## 1️⃣ Training Results
 
-## Model Configuration
-- Vocabulary size: 32,768
-- Hidden size: 768
-- Number of layers: 12
-- Number of attention heads: 12
-- Intermediate size: 2,048
-- Maximum position embeddings: 2,048
-- Context length: 64
-- Batch size: 4
-- Learning rate: 3e-4
+* **Total training**:
+
+  * Phase 1: **5000 steps** from scratch.
+  * Phase 2: **resume from checkpoint** and train for **~50 additional steps** (5000–5040), confirming that checkpointing and continuing training work correctly. 
+* **Final loss**:
+
+  * By step 3000 onwards the loss is essentially **0.0000**, and it stays at that level through step 4500 and into the resumed 5000–5040 region. 
+  * This means the model has **almost perfectly fit** the training data (strong memorisation).
+* **Qualitative behaviour**:
+
+  * Early on, sampled text is noisy, with random phrases and artifacts mixed into the prompt. 
+  * From step 500 onward, the model consistently produces **clean, Shakespeare-style dialogue** starting from your prompt `"Once upon a time"`, showing strong copying/memorisation of the training corpus. 
+
+---
+
+## 2️⃣ Training Progress
+
+* **Loss trajectory**:
+
+  * Step 0: Loss ≈ **10.67** (random init). 
+  * Step 500: Loss ≈ **0.0004**.
+  * Step 1000: Loss ≈ **0.0002**.
+  * Steps 1500–3000: Loss drops to ≈ **0.0001 → 0.0000**.
+  * Steps 3500–4500: Loss remains at **0.0000**, showing the model has fully saturated on the dataset. 
+  * Resumed steps 5000–5040: still **0.0000**, confirming that checkpoint restore worked correctly and training continued smoothly. 
+* **Speed**:
+
+  * Initial step: ~**1100 tokens/sec** (startup overhead).
+  * After warm-up: stabilises around **15k–18k tokens/sec** for most of the run, with one dip to ~12.8k near step 4500. 
+* **Sample evolution**:
+
+  * Step 0 sample is mostly gibberish with broken words and random structure. 
+  * By step 500+, the samples are coherent, repeatedly reproducing the same Shakespearean dialogue segment, which is exactly what you’d expect from a tiny-context LM overfitting a small dataset. 
+
+So in short: **very fast convergence, heavy memorisation, smooth resume from checkpoint, and high tokens/sec throughput.**
+
+---
+
+## 3️⃣ Model Configuration (Smol135 Implementation)
+
+
+* **Architecture**:
+
+  * Decoder-only **Transformer language model**.
+  * **12 transformer blocks** (layers).
+  * **Model dimension**: 768.
+  * **Attention heads**: 12 heads per layer.
+  * **Feed-forward size**: 3072 (≈ 4 × d_model).
+  * **Context length**: 64 tokens (training context window).
+  * **Vocabulary size**: 49,152 tokens (using `HuggingFaceTB/SmolLM2-135M` tokenizer).
+* **Training setup**:
+
+  * Objective: **causal language modeling** (next-token prediction).
+  * Loss: cross-entropy over logits, with padding index ignored.
+  * Optimiser: AdamW (with typical small LR, weight decay).
+  * Total training schedule:
+
+    * 1st stage: 5000 steps from scratch.
+    * 2nd stage: load checkpoint at 5000, continue for 50 more steps (to validate resume + checkpoint correctness).
+* **Usage in HF Space**:
+
+  * The **weights (`model.pt`) live in the model repo**: `justpradeep/smol135-finetuned`.
+  * The **Space (`app.py`) reconstructs `SmolLM2(config)` locally**, then loads the state dict from that repo and exposes a 
 
 ## Usage
 1. Install requirements:
@@ -103,7 +155,7 @@ Checkpoints are saved at:
 
 ## Logs
 
-[Logs](https://github.com/pradeep6kumar/SMOL135/blob/main/log.txt)
+[Logs](./logs/training.log)
 
 
 ## Model Architecture Details
@@ -140,8 +192,8 @@ The SmolLM2 model follows a standard transformer architecture with:
 **Total Parameters**: ~93M parameters
 
 ## Model Links
-- [Hugging Face Model Repository](https://huggingface.co/spaces/pradeep6kumar2024/smollm2-spaces/tree/main)
-- [Hugging Face Spaces Demo](https://huggingface.co/spaces/pradeep6kumar2024/smollm2-spaces)
+- [Hugging Face Model Repository](https://huggingface.co/justpradeep/smol135-finetuned)
+- [Hugging Face Spaces Demo](https://huggingface.co/spaces/justpradeep/smol135-app)
 
 To use the model from Hugging Face:
 ```python
