@@ -43,8 +43,7 @@ project_root/
 - TF32 optimizations for NVIDIA GPUs
 
 ## Training Results
-The model was trained for 5000 steps initially, followed by 50 additional fine-tuning steps. Key metrics:
-Here you go, split into the three segments you asked for 👇
+The model was trained for 5000 steps initially, followed by 50 additional fine-tuning steps.
 
 ---
 
@@ -61,7 +60,7 @@ Here you go, split into the three segments you asked for 👇
 * **Qualitative behaviour**:
 
   * Early on, sampled text is noisy, with random phrases and artifacts mixed into the prompt. 
-  * From step 500 onward, the model consistently produces **clean, Shakespeare-style dialogue** starting from your prompt `"Once upon a time"`, showing strong copying/memorisation of the training corpus. 
+  * From step 500 onward, the model consistently produces **clean, Shakespeare-style dialogue** starting from the prompt `"Once upon a time"`, showing strong copying/memorisation of the training corpus. 
 
 ---
 
@@ -99,7 +98,7 @@ So in short: **very fast convergence, heavy memorisation, smooth resume from che
   * **Attention heads**: 12 heads per layer.
   * **Feed-forward size**: 3072 (≈ 4 × d_model).
   * **Context length**: 64 tokens (training context window).
-  * **Vocabulary size**: 49,152 tokens (using `HuggingFaceTB/SmolLM2-135M` tokenizer).
+  * **Vocabulary size**: 32,768 tokens (using `HuggingFaceTB/SmolLM2-135M` tokenizer).
 * **Training setup**:
 
   * Objective: **causal language modeling** (next-token prediction).
@@ -112,7 +111,7 @@ So in short: **very fast convergence, heavy memorisation, smooth resume from che
 * **Usage in HF Space**:
 
   * The **weights (`model.pt`) live in the model repo**: `justpradeep/smol135-finetuned`.
-  * The **Space (`app.py`) reconstructs `SmolLM2(config)` locally**, then loads the state dict from that repo and exposes a 
+  * The **Space (`app.py`) reconstructs `SmolLM2(config)` locally**, then loads the state dict from that repo then loads the state dict from that repo and exposes a Gradio interface for text generation.
 
 ## Usage
 1. Install requirements:
@@ -120,7 +119,7 @@ So in short: **very fast convergence, heavy memorisation, smooth resume from che
 pip install torch transformers tqdm
 ```
 
-2. Prepare your input text file as `input.txt`
+2. Prepare the input text file as `datasets/input.txt`
 
 3. Run training:
 ```bash
@@ -169,27 +168,98 @@ The SmolLM2 model follows a standard transformer architecture with:
   - Layer normalization
 - Final layer normalization and language model head
 
-### Parameter Calculation
 
-1. **Embeddings**:
-   - Token embeddings: vocab_size × hidden_size = 32,768 × 768 = 25,165,824
-   - Position embeddings: max_position × hidden_size = 2,048 × 768 = 1,572,864
+---
+## ✅ Parameter Calculation
 
-2. **Each Transformer Block**:
-   - Self-attention:
-     - Q, K, V matrices: 3 × (hidden_size × hidden_size) = 3 × (768 × 768) = 1,769,472
-     - Output projection: hidden_size × hidden_size = 768 × 768 = 589,824
-   - Feed-forward:
-     - First layer: hidden_size × intermediate_size = 768 × 2,048 = 1,572,864
-     - Second layer: intermediate_size × hidden_size = 2,048 × 768 = 1,572,864
-   - Layer norms: 2 × 2 × hidden_size = 2 × 2 × 768 = 3,072
-   - Total per block: 5,508,096
+My model has:
 
-3. **Final Layers**:
-   - Final layer norm: 2 × hidden_size = 2 × 768 = 1,536
-   - Language model head: hidden_size × vocab_size = 768 × 32,768 = 25,165,824
+- **vocab size** = 32,768  
+- **hidden size** = 768  
+- **num layers** = 12  
+- **MLP expansion** = 4 × hidden_size = 3,072  
+- **max positions** = 2,048  
+- **LM head not tied** to embeddings  
 
-**Total Parameters**: ~93M parameters
+---
+
+### 1. Embedding Parameters
+
+**Token embeddings**
+
+32,768 × 768 = **25,165,824**
+
+**Position embeddings**
+
+2,048 × 768 = **1,572,864**
+
+**Total embeddings = 26,738,688**
+
+---
+
+### 2. Parameters Per Transformer Block
+
+**A) Self-Attention**
+
+- QKV combined (`Linear(768 → 3×768, bias=False)`):  
+  768 × (3 × 768) = **1,769,472**
+- Output projection (`Linear(768 → 768, bias=False)`):  
+  768 × 768 = **589,824**
+
+**B) MLP (4× expansion)**
+
+- c_fc (`Linear(768 → 3072)`):  
+  768 × 3,072 = **2,359,296**
+- c_proj (`Linear(3072 → 768)`):  
+  3,072 × 768 = **2,359,296**
+
+**C) LayerNorms**
+
+Two LayerNorms per block, each with γ and β of size 768:
+
+2 × (2 × 768) = **3,072**
+
+**Total per transformer block**
+
+1,769,472 + 589,824 + 2,359,296 + 2,359,296 + 3,072 = **7,080,960**
+
+**12 blocks total**
+
+12 × 7,080,960 = **84,971,520**
+
+---
+
+### 3. Final Layers
+
+**Final LayerNorm**
+
+2 × 768 = **1,536**
+
+**LM Head** (`Linear(768 → 32,768, bias=False)`)
+
+768 × 32,768 = **25,165,824**
+
+**Final layers total = 25,167,360**
+
+---
+
+### 🎯 Total Parameter Count
+
+26,738,688 (embeddings)  
++ 84,971,520 (transformer blocks)  
++ 25,167,360 (final layers)  
+= **136,877,568 parameters**
+
+≈ **136.9M (~137M)**, matching a SmolLM2-135M-class model.
+
+
+### ✅ **Final parameter count ≈ 136.9M (~137M)**
+
+This exactly matches a **SmolLM2-135M class model**.
+
+---
+
+
 
 ## Model Links
 - [Hugging Face Model Repository](https://huggingface.co/justpradeep/smol135-finetuned)
@@ -197,10 +267,25 @@ The SmolLM2 model follows a standard transformer architecture with:
 
 To use the model from Hugging Face:
 ```python
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoTokenizer
+from huggingface_hub import hf_hub_download
+from config.model_config import ModelConfig
+from model.smolLM2 import SmolLM2
+import torch
 
-model = AutoModelForCausalLM.from_pretrained("your-username/SmolLM2-trained")
-tokenizer = AutoTokenizer.from_pretrained("your-username/SmolLM2-trained")
+tokenizer = AutoTokenizer.from_pretrained("HuggingFaceTB/SmolLM2-135M")
+
+ckpt_path = hf_hub_download("justpradeep/smol135-finetuned", "model.pt")
+
+config = ModelConfig()
+model = SmolLM2(config)
+
+state = torch.load(ckpt_path, map_location="cpu")
+state = state["model_state"] if "model_state" in state else state
+model.load_state_dict(state)
+model.eval()
+
+
 ```
 
 ## License
